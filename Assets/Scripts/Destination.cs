@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Destination : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] string destinationName;
+    [SerializeField] int score;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        Traveller traveller = collision.gameObject.GetComponent<Traveller>();
+        Debug.Log("The traveller is here!");
+        if (traveller.GetDestination().gameObject == gameObject)
+        {
+            Debug.Log("The traveller is here!");
+            // TODO: Score point.
+            traveller.ReachDestination();
+        }
     }
 }

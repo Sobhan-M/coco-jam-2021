@@ -77,6 +77,7 @@ public class Intersection : MonoBehaviour
     {
         travellers.Enqueue(collision.gameObject);
         StopTraveller(collision.gameObject);
+        Reposition(travellers.Peek());
         EnableButtons();
     }
 
@@ -103,9 +104,10 @@ public class Intersection : MonoBehaviour
                 direction = Directions.Up;
                 break;
         }
-        Reposition(traveller);
         RestartTraveller(traveller, direction);
         if (travellers.Count == 0)
             DisableButtons();
+        else
+            Reposition(travellers.Peek());
     }
 }
