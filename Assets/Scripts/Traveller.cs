@@ -7,8 +7,9 @@ public class Traveller : MonoBehaviour
 {
     [SerializeField] Destination destination;
     [SerializeField] Image destinationImage;
-    [SerializeField] float speed = 20f;
-    
+    [SerializeField] float yVelocity = 20f;
+    [SerializeField] float xVelocity = 0f;
+
 
     string travellerName;
     float startTime;
@@ -16,7 +17,7 @@ public class Traveller : MonoBehaviour
 
     void Start()
     {
-        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, speed * Time.deltaTime);
+        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(xVelocity * Time.deltaTime, yVelocity * Time.deltaTime);
         RandomNewDestination();
         UpdateDestinationImage();
     }

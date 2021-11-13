@@ -29,7 +29,8 @@ public class Intersection : MonoBehaviour
 
     private void Reposition(GameObject traveller)
     {
-        traveller.gameObject.transform.position = gameObject.transform.position;
+        Vector3 position = gameObject.transform.position;
+        traveller.gameObject.transform.position = new Vector3(position.x, position.y, position.z - 1);
     }    
 
     private void EnableButtons()
