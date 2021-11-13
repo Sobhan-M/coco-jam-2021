@@ -13,7 +13,7 @@ public class Intersection : MonoBehaviour
     [SerializeField] Button leftButton = null;
 
     [SerializeField] float velocity = 10f;
-    GameObject traveller = null;
+    Queue<GameObject> travellers = new Queue<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -27,12 +27,12 @@ public class Intersection : MonoBehaviour
         
     }
 
-    public void Reposition()
+    private void Reposition(GameObject traveller)
     {
         traveller.gameObject.transform.position = gameObject.transform.position;
     }    
 
-    public void EnableButtons()
+    private void EnableButtons()
     {
         if (upButton != null)
             upButton.gameObject.SetActive(true);
@@ -44,7 +44,7 @@ public class Intersection : MonoBehaviour
             leftButton.gameObject.SetActive(true);
     }
 
-    public void DisableButtons()
+    private void DisableButtons()
     {
         if (upButton != null)
             upButton.gameObject.SetActive(false);
@@ -56,14 +56,13 @@ public class Intersection : MonoBehaviour
             leftButton.gameObject.SetActive(false);
     }
 
-    public void StopTraveller()
+    private void StopTraveller(GameObject traveller)
     {
         traveller.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
     }
 
-    public void RestartTraveller(Directions direction)
+    private void RestartTraveller(GameObject traveller, Directions direction)
     {
-        Debug.Log(direction);
         if (direction == Directions.Up)
             traveller.GetComponent<Rigidbody2D>().velocity = new Vector2(0, velocity * Time.deltaTime);
         if (direction == Directions.Down)
@@ -76,13 +75,14 @@ public class Intersection : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        traveller = collision.gameObject;
-        StopTraveller();
+        travellers.Enqueue(collision.gameObject);
+        StopTraveller(collision.gameObject);
         EnableButtons();
     }
 
     public void Exit(string directionString)
     {
+        GameObject traveller = travellers.Dequeue();
         Directions direction;
         switch (directionString)
         {
@@ -103,8 +103,9 @@ public class Intersection : MonoBehaviour
                 direction = Directions.Up;
                 break;
         }
-        Reposition();
-        RestartTraveller(direction);
-        DisableButtons();
+        Reposition(traveller);
+        RestartTraveller(traveller, direction);
+        if (travellers.Count == 0)
+            DisableButtons();
     }
 }
