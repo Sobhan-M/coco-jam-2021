@@ -7,24 +7,63 @@ public class Intersection : MonoBehaviour
 {
     public enum Directions {Up, Down, Left, Right}
 
-    [SerializeField] Button upButton = null;
-    [SerializeField] Button downButton = null;
-    [SerializeField] Button rightButton = null;
-    [SerializeField] Button leftButton = null;
+    [SerializeField] bool hasUpButton = true;
+    [SerializeField] bool hasDownButton = true;
+    [SerializeField] bool hasRightButton = true;
+    [SerializeField] bool hasLeftButton = true;
+    [SerializeField] GameObject arrow;
+    [SerializeField] float arrowDisplacement = 32f;
+    GameObject upButton = null;
+    GameObject downButton = null;
+    GameObject leftButton = null;
+    GameObject rightButton = null;
 
     [SerializeField] float velocity = 10f;
     Queue<GameObject> travellers = new Queue<GameObject>();
 
+    private void CreateButtons()
+    {
+        float currentX = gameObject.transform.position.x;
+        float currentY = gameObject.transform.position.y;
+        float currentZ = gameObject.transform.position.z;
+
+        Quaternion rotation = new Quaternion();
+
+
+        if (hasUpButton)
+        {
+            upButton = Instantiate(arrow, new Vector3(currentX, currentY + arrowDisplacement, currentZ - 1), Quaternion.identity);
+            upButton.GetComponent<Arrow>().SetDirection(Directions.Up);
+            upButton.GetComponent<Arrow>().SetIntersection(this);
+        }
+        if (hasDownButton)
+        {
+            rotation.eulerAngles = new Vector3(0, 0, 180);
+            downButton = Instantiate(arrow, new Vector3(currentX, currentY - arrowDisplacement, currentZ - 1), rotation);
+            downButton.GetComponent<Arrow>().SetDirection(Directions.Down);
+            downButton.GetComponent<Arrow>().SetIntersection(this);
+        }
+        if (hasRightButton)
+        {
+            rotation.eulerAngles = new Vector3(0, 0, -90);
+            rightButton = Instantiate(arrow, new Vector3(currentX + arrowDisplacement, currentY, currentZ - 1), rotation);
+            rightButton.GetComponent<Arrow>().SetDirection(Directions.Right);
+            rightButton.GetComponent<Arrow>().SetIntersection(this);
+        }
+        if (hasLeftButton)
+        {
+            rotation.eulerAngles = new Vector3(0, 0, 90);
+            leftButton = Instantiate(arrow, new Vector3(currentX - arrowDisplacement, currentY, currentZ - 1), rotation);
+            leftButton.GetComponent<Arrow>().SetDirection(Directions.Left);
+            leftButton.GetComponent<Arrow>().SetIntersection(this);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        CreateButtons();
         DisableButtons();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void Reposition(GameObject traveller)
@@ -35,25 +74,25 @@ public class Intersection : MonoBehaviour
 
     private void EnableButtons()
     {
-        if (upButton != null)
+        if (hasUpButton)
             upButton.gameObject.SetActive(true);
-        if (downButton != null)
+        if (hasDownButton)
             downButton.gameObject.SetActive(true);
-        if (rightButton != null)
+        if (hasRightButton)
             rightButton.gameObject.SetActive(true);
-        if (leftButton != null)
+        if (hasLeftButton)
             leftButton.gameObject.SetActive(true);
     }
 
     private void DisableButtons()
     {
-        if (upButton != null)
+        if (hasUpButton)
             upButton.gameObject.SetActive(false);
-        if (downButton != null)
+        if (hasDownButton)
             downButton.gameObject.SetActive(false);
-        if (rightButton != null)
+        if (hasRightButton)
             rightButton.gameObject.SetActive(false);
-        if (leftButton != null)
+        if (hasLeftButton)
             leftButton.gameObject.SetActive(false);
     }
 

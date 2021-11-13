@@ -45,11 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00669a3273fbcc146b4857c531e8853f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upButton: {fileID: 0}
-  downButton: {fileID: 0}
-  rightButton: {fileID: 0}
-  leftButton: {fileID: 0}
-  velocity: 200
+  hasUpButton: 1
+  hasDownButton: 1
+  hasRightButton: 1
+  hasLeftButton: 1
+  arrow: {fileID: 8364083544287091730, guid: 1958c985063c33b4d87b2e1444c32be2, type: 3}
+  arrowDisplacement: 0.5
+  velocity: 250
 --- !u!61 &1734631653325488509
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -41,8 +41,6 @@ public class Traveller : MonoBehaviour
 
     private void UpdateDestinationImage()
     {
-        Debug.Log(destinationImage.sprite);
-        Debug.Log(destination.gameObject.GetComponent<SpriteRenderer>().sprite);
         destinationImage.sprite = destination.gameObject.GetComponent<SpriteRenderer>().sprite;
     }
     public void ReachDestination()
