@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destination: {fileID: 0}
   destinationImage: {fileID: 0}
-  yVelocity: 250
+  yVelocity: 0
   xVelocity: 250
   check: {fileID: 21300000, guid: 55445cb1baadae9459a6a1371a22312b, type: 3}
   confetti: {fileID: 5014044253495584082, guid: 858f493e915854b45bd77ad5ef72081d, type: 3}

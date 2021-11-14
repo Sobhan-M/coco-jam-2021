@@ -32,28 +32,28 @@ public class Intersection : MonoBehaviour
 
         if (hasUpButton)
         {
-            upButton = Instantiate(arrow, new Vector3(currentX, currentY + arrowDisplacement, currentZ - 1), Quaternion.identity);
+            upButton = Instantiate(arrow, new Vector3(currentX, currentY + arrowDisplacement, currentZ - 3), Quaternion.identity);
             upButton.GetComponent<Arrow>().SetDirection(Directions.Up);
             upButton.GetComponent<Arrow>().SetIntersection(this);
         }
         if (hasDownButton)
         {
             rotation.eulerAngles = new Vector3(0, 0, 180);
-            downButton = Instantiate(arrow, new Vector3(currentX, currentY - arrowDisplacement, currentZ - 1), rotation);
+            downButton = Instantiate(arrow, new Vector3(currentX, currentY - arrowDisplacement, currentZ - 3), rotation);
             downButton.GetComponent<Arrow>().SetDirection(Directions.Down);
             downButton.GetComponent<Arrow>().SetIntersection(this);
         }
         if (hasRightButton)
         {
             rotation.eulerAngles = new Vector3(0, 0, -90);
-            rightButton = Instantiate(arrow, new Vector3(currentX + arrowDisplacement, currentY, currentZ - 1), rotation);
+            rightButton = Instantiate(arrow, new Vector3(currentX + arrowDisplacement, currentY, currentZ - 3), rotation);
             rightButton.GetComponent<Arrow>().SetDirection(Directions.Right);
             rightButton.GetComponent<Arrow>().SetIntersection(this);
         }
         if (hasLeftButton)
         {
             rotation.eulerAngles = new Vector3(0, 0, 90);
-            leftButton = Instantiate(arrow, new Vector3(currentX - arrowDisplacement, currentY, currentZ - 1), rotation);
+            leftButton = Instantiate(arrow, new Vector3(currentX - arrowDisplacement, currentY, currentZ - 3), rotation);
             leftButton.GetComponent<Arrow>().SetDirection(Directions.Left);
             leftButton.GetComponent<Arrow>().SetIntersection(this);
         }
@@ -68,10 +68,16 @@ public class Intersection : MonoBehaviour
 
     private void Update()
     {
+        // Dealing with the case where the traveller successfully reaches when at an intersection.
         if (travellers.Count > 0 && travellers.Peek() == null)
         {
             DisableButtons();
             travellers.Dequeue();
+            if (travellers.Count > 0)
+            {
+                Reposition(travellers.Peek());
+                EnableButtons();
+            }
         }
 
     }

@@ -9,6 +9,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] int timeInSeconds = 60;
     [SerializeField] LevelSystem levels;
     [SerializeField] TextMeshProUGUI timeText;
+    [SerializeField] int losingDelay = 2;
     private int score = 0;
     private float startTime;
     private float currentTime;
@@ -24,7 +25,7 @@ public class ScoreManager : MonoBehaviour
         {
             currentTime = Time.time;
             timeText.text = (timeInSeconds - currentTime + startTime).ToString("0.00") + " s";
-            if (currentTime - startTime > timeInSeconds)
+            if (currentTime - startTime > timeInSeconds + losingDelay)
             {
                 levels.GameOver();
             }
