@@ -6,14 +6,24 @@ public class Destination : MonoBehaviour
 {
     [SerializeField] string destinationName;
     [SerializeField] int score;
+    [SerializeField] float travellerDestroyDelay = 0f;
+    [SerializeField] ScoreManager scoreManager;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Traveller traveller = collision.gameObject.GetComponent<Traveller>();
         if (traveller.GetDestination().gameObject == gameObject)
         {
-            // TODO: Score point.
-            traveller.ReachDestination();
+            scoreManager.AddScore(score);
+            traveller.ReachDestination(travellerDestroyDelay);
+            StartCoroutine(CheckWinConditionAfterDelay());
         }
     }
+
+    IEnumerator CheckWinConditionAfterDelay()
+    {
+        yield return new WaitForSeconds(travellerDestroyDelay + 0.5f);
+        scoreManager.CheckWinCondition();
+    }
 }
+

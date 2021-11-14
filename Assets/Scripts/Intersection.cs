@@ -66,10 +66,21 @@ public class Intersection : MonoBehaviour
         DisableButtons();
     }
 
+    private void Update()
+    {
+        if (travellers.Count > 0 && travellers.Peek() == null)
+        {
+            DisableButtons();
+            travellers.Dequeue();
+        }
+
+    }
+
     private void Reposition(GameObject traveller)
     {
         Vector3 position = gameObject.transform.position;
         traveller.gameObject.transform.position = new Vector3(position.x, position.y, position.z - 1);
+        traveller.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
     }    
 
     private void EnableButtons()
