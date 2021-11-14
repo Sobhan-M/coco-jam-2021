@@ -29,6 +29,7 @@ public class Arrow : MonoBehaviour
 
     private void OnMouseDown()
     {
-        intersection.Exit(direction.ToString());
+        if (!PauseSystem.isPaused)
+            intersection.Exit(direction.ToString());
     }
 }
