@@ -52,6 +52,7 @@ MonoBehaviour:
   arrow: {fileID: 8364083544287091730, guid: 1958c985063c33b4d87b2e1444c32be2, type: 3}
   arrowDisplacement: 0.75
   velocity: 250
+  stoppingSoundEffect: {fileID: 8300000, guid: 459beee805ff955439e2f0febf97ca16, type: 3}
 --- !u!61 &1734631653325488509
 BoxCollider2D:
   m_ObjectHideFlags: 0

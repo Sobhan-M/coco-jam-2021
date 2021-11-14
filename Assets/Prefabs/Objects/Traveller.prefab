@@ -54,6 +54,7 @@ MonoBehaviour:
   confetti: {fileID: 5014044253495584082, guid: 858f493e915854b45bd77ad5ef72081d, type: 3}
   isEndless: 0
   numOfStops: 1
+  soundEffect: {fileID: 8300000, guid: 11139a4c433a702479c61dd0f411542a, type: 3}
 --- !u!50 &555322766623945988
 Rigidbody2D:
   serializedVersion: 4

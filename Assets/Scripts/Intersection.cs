@@ -21,6 +21,8 @@ public class Intersection : MonoBehaviour
     [SerializeField] float velocity = 10f;
     Queue<GameObject> travellers = new Queue<GameObject>();
 
+    [SerializeField] AudioClip stoppingSoundEffect;
+
     private void CreateButtons()
     {
         float currentX = gameObject.transform.position.x;
@@ -115,6 +117,7 @@ public class Intersection : MonoBehaviour
 
     private void StopTraveller(GameObject traveller)
     {
+        AudioSource.PlayClipAtPoint(stoppingSoundEffect, Camera.main.transform.position);
         traveller.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
     }
 

@@ -13,6 +13,7 @@ public class Traveller : MonoBehaviour
     [SerializeField] GameObject confetti;
     [SerializeField] bool isEndless = false;
     [SerializeField] int numOfStops = 1;
+    [SerializeField] AudioClip soundEffect;
 
 
     string travellerName;
@@ -49,6 +50,7 @@ public class Traveller : MonoBehaviour
     }
     public void ReachDestination(float delay)
     {
+        AudioSource.PlayClipAtPoint(soundEffect, Camera.main.transform.position);
         --numOfStops;
         RandomNewDestination();
         UpdateDestinationImage();
