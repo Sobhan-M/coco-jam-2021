@@ -18,7 +18,7 @@ public class Intersection : MonoBehaviour
     GameObject leftButton = null;
     GameObject rightButton = null;
 
-    [SerializeField] float velocity = 10f;
+    [SerializeField] float velocity = 2f;
     Queue<GameObject> travellers = new Queue<GameObject>();
 
     [SerializeField] AudioClip stoppingSoundEffect;
@@ -124,13 +124,13 @@ public class Intersection : MonoBehaviour
     private void RestartTraveller(GameObject traveller, Directions direction)
     {
         if (direction == Directions.Up)
-            traveller.GetComponent<Rigidbody2D>().velocity = new Vector2(0, velocity * Time.deltaTime);
+            traveller.GetComponent<Rigidbody2D>().velocity = new Vector2(0, velocity);
         if (direction == Directions.Down)
-            traveller.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -velocity * Time.deltaTime);
+            traveller.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -velocity);
         if (direction == Directions.Right)
-            traveller.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity * Time.deltaTime, 0);
+            traveller.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity, 0);
         if (direction == Directions.Left)
-            traveller.GetComponent<Rigidbody2D>().velocity = new Vector2(-velocity * Time.deltaTime, 0);
+            traveller.GetComponent<Rigidbody2D>().velocity = new Vector2(-velocity, 0);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

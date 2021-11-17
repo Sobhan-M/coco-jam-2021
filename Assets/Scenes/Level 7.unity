@@ -973,7 +973,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 555322766623945991, guid: e44cef446d2ca7c4898b1c52511933f1, type: 3}
       propertyPath: xVelocity
-      value: -250
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 555322766623945991, guid: e44cef446d2ca7c4898b1c52511933f1, type: 3}
       propertyPath: yVelocity
@@ -6330,7 +6330,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 555322766623945991, guid: e44cef446d2ca7c4898b1c52511933f1, type: 3}
       propertyPath: yVelocity
-      value: 250
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 555322766623945991, guid: e44cef446d2ca7c4898b1c52511933f1, type: 3}
       propertyPath: destinationImage
@@ -8270,7 +8270,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 555322766623945991, guid: e44cef446d2ca7c4898b1c52511933f1, type: 3}
       propertyPath: xVelocity
-      value: 250
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 555322766623945991, guid: e44cef446d2ca7c4898b1c52511933f1, type: 3}
       propertyPath: yVelocity
@@ -9464,7 +9464,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 555322766623945991, guid: e44cef446d2ca7c4898b1c52511933f1, type: 3}
       propertyPath: yVelocity
-      value: -250
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 555322766623945991, guid: e44cef446d2ca7c4898b1c52511933f1, type: 3}
       propertyPath: numOfStops
@@ -11557,7 +11557,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 555322766623945991, guid: e44cef446d2ca7c4898b1c52511933f1, type: 3}
       propertyPath: yVelocity
-      value: 250
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 555322766623945991, guid: e44cef446d2ca7c4898b1c52511933f1, type: 3}
       propertyPath: destinationImage

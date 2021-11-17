@@ -7,8 +7,8 @@ public class Traveller : MonoBehaviour
 {
     [SerializeField] Destination destination;
     [SerializeField] Image destinationImage;
-    [SerializeField] float yVelocity = 20f;
-    [SerializeField] float xVelocity = 0f;
+    [SerializeField] float yVelocity = 0f;
+    [SerializeField] float xVelocity = 2f;
     [SerializeField] Sprite check;
     [SerializeField] GameObject confetti;
     [SerializeField] bool isEndless = false;
@@ -22,7 +22,7 @@ public class Traveller : MonoBehaviour
 
     void Start()
     {
-        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(xVelocity * Time.deltaTime, yVelocity * Time.deltaTime);
+        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(xVelocity, yVelocity);
         RandomNewDestination();
         UpdateDestinationImage();
     }
